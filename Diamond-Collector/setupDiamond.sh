@@ -16,7 +16,7 @@ cat > /etc/diamond/diamond.conf << EOL
 [server]
 
 # Handlers for published metrics.
-handlers = diamond.handler.graphite.GraphitePickleHandler, diamond.handler.archive.ArchiveHandler
+handlers = diamond.handler.graphitepickle.GraphitePickleHandler, diamond.handler.archive.ArchiveHandler
 
 # User diamond will run as
 # Leave empty to use the current user
