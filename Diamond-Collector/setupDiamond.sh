@@ -207,6 +207,42 @@ enabled = True
 [[VMStatCollector]]
 enabled = True
 
+[[HttpCollector]]
+enabled = True
+
+[[NetworkCollector]]
+enabled = True
+
+[[TCPCollector]]
+enabled = True
+
+[[UDPCollector]]
+enabled = True
+
+[[UsersCollector]]
+enabled = True
+
+[[SNMPCollector]]
+enabled = True
+
+[[SNMPInterfaceCollector]]
+enabled = True
+
+[[SNMPRawCollector]]
+enabled = True
+
+[[IPVSCollector]]
+enabled = True
+
+[[UptimeCollector]]
+enabled = True
+
+[[HttpdCollector]]
+enabled = True
+
+[[NetstatCollector]]
+enabled = True
+
 ################################################################################
 ### Options for logging
 # for more information on file format syntax:
