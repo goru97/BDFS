@@ -1,6 +1,7 @@
 package com.rackspacecloud.warzone.services.network
 
 import com.rackspacecloud.warzone.io.CassandraFetcher
+import com.rackspacecloud.warzone.services.Stitcher
 import org.apache.spark.mllib.linalg.Vectors
 
 /**
@@ -21,6 +22,10 @@ class NetworkService {
   def getErrorsReceived():Array[Double] = {
     val cf = new CassandraFetcher()
     cf.fetchDataForMetric("123.servers.datastax-write.network.bond0.rx_errors")
+  }
+
+  def getStitchedNetwork():Array[Array[Double]] = {
+   Stitcher.stitch(getBytesReceived, getPacketsReceived, getErrorsReceived)
   }
 
 }

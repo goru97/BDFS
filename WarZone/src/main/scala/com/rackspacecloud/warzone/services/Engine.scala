@@ -1,20 +1,20 @@
 package com.rackspacecloud.warzone.services
 
-import com.rackspacecloud.warzone.io.{CassandraFetcher, SparkIO}
+import com.rackspacecloud.warzone.io.SparkIO
+import com.rackspacecloud.warzone.ml.Trainer
 import com.rackspacecloud.warzone.services.network.NetworkService
 import org.apache.spark.mllib.linalg.Vectors
 import org.apache.spark.mllib.clustering._
 import org.apache.spark.mllib.linalg.Vector
 import org.apache.spark.rdd.RDD
-import com.datastax.spark.connector.cql.CassandraConnector
 
 /**
  * Created by gauravbajaj on 3/18/16.
  */
 
-/*
+
 class Engine1 {
-  val sc = SparkIO.sparkContext
+ /* val sc = SparkIO.sparkContext
   val rawData = sc.textFile("/Users/gauravbajaj/Downloads/kddcup.data")
 
   val labelsAndData = rawData.map { line =>
@@ -27,15 +27,14 @@ class Engine1 {
 
   val _data = labelsAndData.values.cache()
 
-  def data = _data
+  def data = _data*/
   //val kmeans = new KMeans()
   //val model = kmeans.run(data)
 
 }
 
-
 object Engine {
-  val engine = new Engine1()
+/* val engine = new Engine1()
 
 def distance (a:Vector, b:Vector) =
    math.sqrt(a.toArray.zip(b.toArray).
@@ -51,13 +50,17 @@ def distance (a:Vector, b:Vector) =
    kmeans.setK(k)
    val model = kmeans.run(data)
    data.map(d => distToCentroid(d, model)).mean()
- }
+ }*/
 
   def main(args: Array[String]): Unit = {
 
     /*val data = engine.data
     (5 to 40 by 5).map(k => (k, clusteringScore(data, k))) .foreach(println)*/
-   val stitcher = new Stitcher()
-    stitcher.printLn
+     /* new NetworkService().getStitchedNetwork().foreach(y => {
+        y.foreach(x => print(x + "\t"))
+        println()
+      })*/
+
+    Trainer.getClusteringScore(new NetworkService().getStitchedNetwork())
   }
 }
