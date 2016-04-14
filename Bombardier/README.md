@@ -1,5 +1,6 @@
 # Bombardier
-Node.js multi-threaded scheduler
+
+## Node.js multi-threaded scheduler
 
 ### Install
 `$ npm install`
@@ -27,7 +28,9 @@ numberOfThreads = **number of CPU cores**
 
 pollIntervalInSeconds = **5**
 
-### TCP Client-Server for 3-way-handshake
+---
+
+## TCP Client-Server for 3-way-handshake
 
 Start the TCP server:
 
