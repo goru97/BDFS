@@ -3,11 +3,15 @@
  */
 
 var net = require('net');
+var argv = require('optimist').argv;
+
+var host = argv.h;
+var port = argv.p;
 
 var client = new net.Socket();
-client.connect(1337, '127.0.0.1', function() {
+client.connect(port, host, function() {
     console.log('Connected');
-    client.write('Hello, server!' + '\r\n -- from client.');
+    client.write('Hello, server! -- from client.');
 });
 
 client.on('data', function(data) {

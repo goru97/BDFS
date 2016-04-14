@@ -1,4 +1,4 @@
-# Multi-threaded-scheduler
+# Bombardier
 Node.js multi-threaded scheduler
 
 ### Install
@@ -26,3 +26,23 @@ The parameters **-t** and **-i** are optional, if not specified use default valu
 numberOfThreads = **number of CPU cores**
 
 pollIntervalInSeconds = **5**
+
+### TCP Client-Server for 3-way-handshake
+
+Start the TCP server:
+
+`$ node tcp/server.js -h host -p port`
+
+example:
+
+`$ node tcp/server.js -h localhost -p 1337`
+
+---
+
+Start the TCP client:
+
+`$ node tcp/client.js -h host -p port`
+
+example:
+
+`$ node tcp/client.js -h localhost -p 1337`

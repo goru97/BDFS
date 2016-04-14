@@ -3,12 +3,16 @@
  */
 
 var net = require('net');
+var argv = require('optimist').argv;
+
+var host = argv.h;
+var port = argv.p;
 
 var server = net.createServer(function(socket) {
     socket.write('Ack from server\r\n');
     socket.pipe(socket);
 });
 
-server.listen(1337, '127.0.0.1', function(){
+server.listen(port, host, function(){
     console.log('Process ' + process.pid + ' is listening to all incoming requests');
 });
