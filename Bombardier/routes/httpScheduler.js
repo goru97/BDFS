@@ -27,13 +27,19 @@ var getDataFromURL = function (timerObj) {
             }, function (response) {
                 // Continuously update stream with data
                 var body = '';
+                var contentType = response.headers['content-type'].toLowerCase();
                 response.on('data', function (d) {
                     body += d;
                 });
                 response.on('end', function () {
 
                     // Data reception is done, do whatever with it!
+                    if (contentType.indexOf("application/json") !== -1){
                     var parsed = JSON.parse(body);
+                    }
+                    else {
+                     parsed = body;
+                     }
                     console.log("Process " + process.pid + " received: " + parsed);
 
                     /*callback({
