@@ -1,5 +1,6 @@
 #!/bin/bash
 apt-get -y install python
+apt-get -y install python-pip
 pip install diamond
 mkdir /var/log/diamond
 mkdir -p /etc/diamond/collectors/
@@ -142,6 +143,8 @@ batch = 100
 [collectors]
 
 [[default]]
+slay = 30
+interval = 20
 ### Defaults options for all Collectors
 
 # Uncomment and set to hardcode a hostname for the collector path
