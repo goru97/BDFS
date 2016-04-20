@@ -1,5 +1,6 @@
 #!/bin/bash
 apt-get -y install python
+apt-get install python-dev
 apt-get -y install python-pip
 pip install diamond
 mkdir /var/log/diamond
