@@ -21,6 +21,7 @@ object Trainer {
   def clusteringScore(data: RDD[Vector], k: Int) = {
     val kmeans = new KMeans()
     kmeans.setK(k)
+    kmeans.setEpsilon(1.0e-6)
     val model = kmeans.run(data)
     data.map(d => distToCentroid(d, model)).mean()
   }
@@ -30,8 +31,9 @@ object Trainer {
     SparkIO.sparkContext.makeRDD(data)
   }
 
+  //def normalize(f:Array[Double]) =
   def getClusteringScore(data:Array[Array[Double]]) = {
     val vectorizedData = convertData(data)
-    (5 to 120 by 5).map(k => (k, clusteringScore(vectorizedData, k))) .foreach(println)
+    (5 to 120 by 5).par.map(k => (k, clusteringScore(vectorizedData, k))) .foreach(println)
   }
 }
