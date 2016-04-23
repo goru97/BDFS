@@ -21,19 +21,23 @@ object Trainer {
   def clusteringScore(data: RDD[Vector], k: Int) = {
     val kmeans = new KMeans()
     kmeans.setK(k)
-    kmeans.setEpsilon(1.0e-6)
     val model = kmeans.run(data)
     data.map(d => distToCentroid(d, model)).mean()
   }
 
   def convertData(twoDArray: Array[Array[Double]]):RDD[Vector] = {
-    val data = twoDArray.map{ featuresRow => Vectors.dense(featuresRow)}
-    SparkIO.sparkContext.makeRDD(data)
+    val data = twoDArray.map(Vectors.dense(_))
+    SparkIO.sparkContext.makeRDD(data) // OR SparkIO.sparkContext.parallelize(data)
   }
+
 
   //def normalize(f:Array[Double]) =
   def getClusteringScore(data:Array[Array[Double]]) = {
-    val vectorizedData = convertData(data)
-    (5 to 120 by 5).par.map(k => (k, clusteringScore(vectorizedData, k))) .foreach(println)
+
+    val normalizedData = ZScorer.getNormalizedData(data)
+    val vectorizedData = convertData(normalizedData)
+    //(5 to 120 by 5).par.map(k => (k, clusteringScore(vectorizedData, k))).foreach(println)
+    (1 to 10 by 1).map(k => (k, clusteringScore(vectorizedData, k))).foreach(println)
+
   }
 }

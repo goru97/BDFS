@@ -8,7 +8,7 @@ import org.apache.spark.{SparkContext, SparkConf}
  */
 
 object SparkIO {
-  val CassandraSeedHost = ""
+  val CassandraSeedHost = "104.130.20.82"
   val SparkCleanerTtl = 3600
   val config = new Config()
   val _conf = new SparkConf().setAppName(config.APP_NAME).setMaster(config.MASTER_URL).set("spark.cassandra.connection.host", CassandraSeedHost).set("spark.cleaner.ttl", SparkCleanerTtl.toString)

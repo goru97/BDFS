@@ -8,7 +8,7 @@ import scala.collection.mutable.ListBuffer
  * Created by gauravbajaj on 3/28/16.
  */
 class NetworkService {
-  val network_metric_list = List("" +
+  val network_metric_list = List(
     "123.servers.ip-172-31-43-14.network.eth0.rx_byte",
     "123.servers.ip-172-31-43-14.network.eth0.rx_packets",
     "123.servers.ip-172-31-43-14.network.eth0.rx_errors",
