@@ -17,13 +17,23 @@ app.set('view engine', 'jade');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
-app.use(bodyParser.json());
+function defaultContentTypeMiddleware (req, res, next) {
+  req.headers['content-type'] = req.headers['content-type'] || 'application/json';
+  next();
+}
+app.use(defaultContentTypeMiddleware);
+app.use(bodyParser.json({limit: '5mb'}));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/v2.0', producer);
+//app.use('/v2.0', producer);
+
+app.post('/v2.0/:tenantId/ingest', function (req, res) {
+  console.log(req);
+  res.send('OK');
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -31,6 +41,7 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
+
 
 // error handlers
 
