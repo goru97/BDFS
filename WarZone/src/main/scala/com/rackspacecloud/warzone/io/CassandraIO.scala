@@ -47,9 +47,9 @@ class CassandraIO {
     return value
   }
 
-  def saveModelandThroughput(tenantId:String, threshold:Double, model:Array[Byte]) {
-    val collection = sc.parallelize(Seq((tenantId, threshold, model)))
-    collection.saveToCassandra("DATA", "models", SomeColumns("tenantid", "threshold", "model"))
+  def saveModelandThroughput(tenantId:String, modelType:String, threshold:Double, model:Array[Byte]) {
+    val collection = sc.parallelize(Seq((tenantId, modelType, threshold, model)))
+    collection.saveToCassandra("DATA", "models", SomeColumns("tenantid", "modeltype", "threshold", "model"))
 
   }
 }

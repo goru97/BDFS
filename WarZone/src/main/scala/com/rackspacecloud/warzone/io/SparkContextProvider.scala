@@ -8,14 +8,11 @@ import org.apache.spark.{SparkContext, SparkConf}
  */
 
 object SparkContextProvider {
-  val CassandraSeedHost = "104.130.20.82"
   val SparkCleanerTtl = 3600
-  val config = new Config()
-  val _conf = new SparkConf().setAppName(config.APP_NAME).setMaster(config.MASTER_URL).set("spark.cassandra.connection.host", CassandraSeedHost).set("spark.cleaner.ttl", SparkCleanerTtl.toString)
+  val _conf = new SparkConf().setAppName(Config.APP_NAME).setMaster(Config.MASTER_URL).set("spark.cassandra.connection.host", Config.CASSANDRA_SEED_URL).set("spark.cleaner.ttl", SparkCleanerTtl.toString)
   val _sc = new SparkContext(_conf)
 
   def sparkContext = _sc
-
   def sparkConf = _conf
 }
 

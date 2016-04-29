@@ -64,6 +64,6 @@ object Trainer {
     oos.writeObject(model);
     oos.close;
     val modelArray = bos.toByteArray(); //Save model as blob
-    new CassandraIO().saveModelandThroughput("123", threshold, modelArray)
+    new CassandraIO().saveModelandThroughput("123", "NetStat", threshold, modelArray)
   }
 }
