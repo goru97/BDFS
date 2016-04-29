@@ -18,9 +18,6 @@ object ZScorer {
     (stdev, mean)
   }
 
-
-
-
   def getNormalizedData(dataArray:Array[Array[Double]]):Array[Array[Double]] = {
     val t = getSTDevMean(dataArray)
     val mean = t._1

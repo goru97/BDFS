@@ -1,6 +1,6 @@
 package com.rackspacecloud.warzone.services.network
 
-import com.rackspacecloud.warzone.io.CassandraFetcher
+import com.rackspacecloud.warzone.io.CassandraIO
 import scala.collection.immutable.List
 import scala.collection.mutable.ListBuffer
 
@@ -30,7 +30,7 @@ class NetworkService {
   }
 
   def getStitchedNetwork():Array[Array[Double]] = {
-    val cf = new CassandraFetcher()
+    val cf = new CassandraIO()
     val network_metrics = ListBuffer[Array[Double]]()
     network_metric_list.foreach(metric => network_metrics+=cf.fetchDataForMetric(metric))
     var metrics_length_list = ListBuffer[Int]()

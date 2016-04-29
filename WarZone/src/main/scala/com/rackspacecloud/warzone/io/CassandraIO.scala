@@ -11,9 +11,9 @@ import com.google.protobuf.CodedInputStream
  * Created by gauravbajaj on 3/21/16.
  */
 
-class CassandraFetcher {
-  val conf = SparkIO.sparkConf
-  val sc = SparkIO.sparkContext
+class CassandraIO {
+  val conf = SparkContextProvider.sparkConf
+  val sc = SparkContextProvider.sparkContext
   CassandraConnector(conf).withSessionDo { session =>
     session.execute("CREATE KEYSPACE IF NOT EXISTS DATA WITH REPLICATION = {'class': 'SimpleStrategy', 'replication_factor': 1 }")
   }
@@ -45,5 +45,11 @@ class CassandraFetcher {
       case 110 => in.readDouble
     }
     return value
+  }
+
+  def saveModelandThroughput(tenantId:String, threshold:Double, model:Array[Byte]) {
+    val collection = sc.parallelize(Seq((tenantId, threshold, model)))
+    collection.saveToCassandra("DATA", "models", SomeColumns("tenantid", "threshold", "model"))
+
   }
 }

@@ -494,6 +494,8 @@ CREATE TABLE IF NOT EXISTS metrics_state (
   compaction={'class': 'SizeTieredCompactionStrategy'} AND
   compression={'chunk_length_kb': '64', 'sstable_compression': 'SnappyCompressor'};
 
+CREATE TABLE IF NOT EXISTS models (tenantId text PRIMARY KEY, threshold double, model blob);
+
 CREATE TABLE IF NOT EXISTS metrics_string (
   key text,
   column1 bigint,

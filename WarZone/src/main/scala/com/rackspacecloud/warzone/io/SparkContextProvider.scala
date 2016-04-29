@@ -7,7 +7,7 @@ import org.apache.spark.{SparkContext, SparkConf}
  * Created by gauravbajaj on 3/19/16.
  */
 
-object SparkIO {
+object SparkContextProvider {
   val CassandraSeedHost = "104.130.20.82"
   val SparkCleanerTtl = 3600
   val config = new Config()

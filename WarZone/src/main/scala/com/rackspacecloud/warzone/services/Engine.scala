@@ -1,6 +1,6 @@
 package com.rackspacecloud.warzone.services
 
-import com.rackspacecloud.warzone.io.SparkIO
+import com.rackspacecloud.warzone.io.SparkContextProvider
 import com.rackspacecloud.warzone.ml.Trainer
 import com.rackspacecloud.warzone.services.network.NetworkService
 import org.apache.spark.mllib.linalg.Vectors
@@ -61,6 +61,6 @@ def distance (a:Vector, b:Vector) =
         println()
       })*/
 
-    Trainer.getClusteringScore(new NetworkService().getStitchedNetwork())
+   Trainer.trainModel
   }
 }
