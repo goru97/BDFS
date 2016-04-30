@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="BurglaryDetection">
+    <output-path>$PROJECT_DIR$/out/artifacts/BurglaryDetection</output-path>
+    <root id="archive" name="BurglaryDetection.war">
+      <element id="javaee-facet-resources" facet="BurglaryDetection/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="BurglaryDetection" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
