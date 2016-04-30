@@ -28,7 +28,8 @@ object StreamProcessor {
     messages.foreachRDD(message => {
       if (message.collect().length > 0) {
         val metriclist = MetricParser.messageToMetrics(message.collect().apply(0)._2)
-        Detector.detectForModel(thresholdAndModel._1, thresholdAndModel._2, metriclist)
+        Detector.detectForModel(thresholdAndModel._1, thresholdAndModel._2, thresholdAndModel._3, thresholdAndModel._4,
+          metriclist)
       }
       else {
         println("No new metrics")
