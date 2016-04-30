@@ -6,7 +6,6 @@ import com.rackspacecloud.detector.utils.{MetricParser, Config}
 import kafka.serializer.StringDecoder
 import org.apache.spark.streaming.kafka.KafkaUtils
 
-
 /**
  * Created by gauravbajaj on 4/27/16.
  */

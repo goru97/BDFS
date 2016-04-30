@@ -11,7 +11,7 @@ import org.apache.spark.{SparkContext, SparkConf}
 object SparkContextProvider {
   val SparkCleanerTtl = 3600
   val _conf = new SparkConf().setAppName(Config.APP_NAME).setMaster(Config.MASTER_URL).set("spark.cassandra.connection.host", Config.CASSANDRA_SEED_URL).set("spark.cleaner.ttl", SparkCleanerTtl.toString)
-  val _ssc = new StreamingContext(_conf, Seconds(10)) // Check for metrics after every 10 seconds
+  val _ssc = new StreamingContext(_conf, Seconds(5)) // Check for metrics after every 5 seconds
   def streamingContext = _ssc
   def sparkConf = _conf
 }

@@ -19,21 +19,25 @@ class CassandraIO {
   def readRows (keySpace: String, columnFamily: String, tenantId: String): CassandraRDD[CassandraRow] ={
     sc.cassandraTable(keySpace, columnFamily).select("model", "modeltype", "threshold", "mean", "stddev").where("tenantid = ?",tenantId)
   }
-  def fetchThresholdModel(): (Double,KMeansModel, Array[Double], Array[Double]) = {
+
+  def bufferToObject(buffer:ByteBuffer):Object = {
+    val modelArray = buffer.array()
+    val bis = new FastByteArrayInputStream(modelArray)
+    val ois = new ObjectInputStream(bis)
+    ois.readObject()
+  }
+
+  def fetchThresholdModel(): (Double, KMeansModel, Array[Double], Array[Double]) = {
     val rdd = readRows("DATA", "models", "123")
     val row = rdd.collect().apply(0)
-    val model = row.getBytes("model")
+    val modelBytes = row.getBytes("model")
     val meanBytes = row.getBytes("mean")
     val stdBytes = row.getBytes("stddev")
     val threshold = row.getDouble("threshold")
-    val modelArray = model.array()
-    val bis = new FastByteArrayInputStream(modelArray)
-    val ois = new ObjectInputStream(bis)
-    (threshold, ois.readObject().asInstanceOf[KMeansModel], toDoubleArray(meanBytes), toDoubleArray(stdBytes))
-  }
-
-  def toDoubleArray(buffer:ByteBuffer): Array[Double] ={
-  buffer.array.map(value => value.toDouble)
+    val model =  bufferToObject(modelBytes).asInstanceOf[KMeansModel]
+    val mean =  bufferToObject(meanBytes).asInstanceOf[Array[Double]]
+    val stdev =  bufferToObject(stdBytes).asInstanceOf[Array[Double]]
+    (threshold,model, mean, stdev)
   }
 
 }
