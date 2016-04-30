@@ -8,7 +8,7 @@ import scala.collection.mutable.ListBuffer
  * Created by gauravbajaj on 3/28/16.
  */
 class NetworkService {
-  val network_metric_list = List(
+ /* val network_metric_list = List(
     "123.servers.ip-172-31-43-14.network.eth0.rx_byte",
     "123.servers.ip-172-31-43-14.network.eth0.rx_packets",
     "123.servers.ip-172-31-43-14.network.eth0.rx_errors",
@@ -21,6 +21,20 @@ class NetworkService {
     "123.servers.ip-172-31-43-14.netstat.LAST_ACK",
     "123.servers.ip-172-31-43-14.netstat.CLOSE",
     "123.servers.ip-172-31-43-14.netstat.ESTABLISHED"
+  )*/
+
+  val network_metric_list = List(
+    "123.servers.ip-172-31-43-14.netstat.SYN_SENT",
+    "123.servers.ip-172-31-43-14.netstat.SYN_RECV",
+    "123.servers.ip-172-31-43-14.netstat.LISTEN",
+    "123.servers.ip-172-31-43-14.netstat.CLOSE_WAIT",
+    "123.servers.ip-172-31-43-14.netstat.TIME_WAIT",
+    "123.servers.ip-172-31-43-14.netstat.LAST_ACK",
+    "123.servers.ip-172-31-43-14.netstat.CLOSING",
+    "123.servers.ip-172-31-43-14.netstat.CLOSE",
+    "123.servers.ip-172-31-43-14.netstat.ESTABLISHED",
+    "123.servers.ip-172-31-43-14.netstat.FIN_WAIT1",
+    "123.servers.ip-172-31-43-14.netstat.FIN_WAIT2"
   )
 
   def minMax(a: Array[Int]) : (Int, Int) = {
