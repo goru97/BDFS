@@ -49,21 +49,30 @@ object Trainer {
     distances.top(100).last
   }
 
+  def modelToByteArray(model:KMeansModel): Array[Byte] ={
+    val bos = new FastByteArrayOutputStream()
+    val oos = new ObjectOutputStream(bos);
+    oos.writeObject(model);
+    oos.close;
+    bos.toByteArray(); //Save model as blob
+  }
+
+  def doubleToByteArray(array:Array[Double]): Array[Byte] ={
+    array.map(value => value.toByte)
+  }
+
   def trainModel() = {
     val data = new NetworkService().getStitchedNetwork()
     val normalizedData = ZScorer.getNormalizedData(data)
-    val vectorizedData = convertData(normalizedData)
-
+    val vectorizedData = convertData(normalizedData._1)
+    val mean = normalizedData._2
+    val std = normalizedData._3
     val clusterAndScore = getClusteringScore(vectorizedData)
     val kmeans = new KMeans()
         kmeans.setK(clusterAndScore._1)
     val model = kmeans.run(vectorizedData)
     val threshold = getThreshold(vectorizedData, model)
-    val bos = new FastByteArrayOutputStream()
-    val oos = new ObjectOutputStream(bos);
-    oos.writeObject(model);
-    oos.close;
-    val modelArray = bos.toByteArray(); //Save model as blob
-    new CassandraIO().saveModelandThroughput("123", "NetStat", threshold, modelArray)
+    val modelArray = modelToByteArray(model)
+    new CassandraIO().saveModelandThroughput("123", "NetStat", threshold, modelArray, doubleToByteArray(mean), doubleToByteArray(std))
   }
 }

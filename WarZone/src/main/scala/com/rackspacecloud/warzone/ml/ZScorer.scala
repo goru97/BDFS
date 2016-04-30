@@ -18,7 +18,7 @@ object ZScorer {
     (stdev, mean)
   }
 
-  def getNormalizedData(dataArray:Array[Array[Double]]):Array[Array[Double]] = {
+  def getNormalizedData(dataArray:Array[Array[Double]]):(Array[Array[Double]], Array[Double], Array[Double]) = {
     val t = getSTDevMean(dataArray)
     val mean = t._1
     val stdev = t._2
@@ -26,6 +26,6 @@ object ZScorer {
     def normalize(value: Array[Double]):Array[Double] = {
       (value, mean, stdev).zipped.map( (value, mean, stdev) => if (stdev <= 0) (value - mean) else (value - mean) / stdev)
     }
-    dataArray.map(normalize(_))
+    (dataArray.map(normalize(_)), mean, stdev)
   }
 }
