@@ -1,0 +1,53 @@
+<!-- need this .js class to initiate slimscroll -->
+<div class="js-sidebar-content">
+    <header class="logo hidden-xs">
+        <a data-ui-sref="app.page({ page: 'about', child: null })">{{app.name}}</a>
+    </header>
+    <div class="sidebar-status visible-xs">
+        <a style="text-align: center" data-ui-sref="app.page({ page: 'about', child: null })">{{app.name}}</a>
+    </div>
+    <!-- main notification links are placed inside of .sidebar-nav -->
+    <ul class="sidebar-nav">
+
+        <li>
+            <a data-ui-sref="app.page({ page: 'about', child: null })">
+                <span class="icon">
+                    <i class="fa fa-lightbulb-o "></i>
+                </span>
+                About HIDS
+            </a>
+        </li>
+
+        <li><a data-ui-sref="app.page({ page: 'kibanadashboard', child: null })"> <span class="icon"><i
+                class="fa fa-desktop"></i></span>Kibana Dashboard</a></li>
+
+        <li><a data-ui-sref="app.page({ page: 'grafanadashboard', child: null })"> <span class="icon"><i
+                class="fa fa-tachometer"></i></span>Grafana Dashboard</a></li>
+
+ <!--       <li>
+            <a class="collapsed" data-ui-sref="app.page({ page: 'lookup', child: 'index' })"
+               data-target="#sidebar-lookUp" data-toggle="collapse" data-parent="#sidebar">
+                <span class="icon"><i class="fa fa-globe"></i></span> Lookup Services
+                <i class="toggle fa fa-angle-down"></i>
+            </a>
+            <ul id="sidebar-lookUp" class="collapse">
+                <li><a data-ui-sref="app.page({ page: 'lookup', child: 'geoglossary' })">Geo Glossary</a></li>
+                <li><a data-ui-sref="app.page({ page: 'lookup', child: 'geoEntity' })">Geo Id</a></li>
+                <li><a data-ui-sref="app.page({ page: 'lookup', child: 'geoNamesEntity' })">Geo Names Id</a></li>
+                <li><a data-ui-sref="app.page({ page: 'lookup', child: 'geoNeighbors' })">Geo Neighbors</a></li>
+                <li><a data-ui-sref="app.page({ page: 'lookup', child: 'ip2location' })">IP 2 Location</a></li>
+                <li><a data-ui-sref="app.page({ page: 'lookup', child: 'ip2income' })">IP to Income</a></li>
+                <li><a data-ui-sref="app.page({ page: 'lookup', child: 'trip' })">Trip</a></li>
+                <li><a data-ui-sref="app.page({ page: 'lookup', child: 'triplat' })">Triplat</a></li>
+                <li><a data-ui-sref="app.page({ page: 'lookup', child: 'yago' })">Yago</a></li>
+            </ul>
+        </li>-->
+
+        <li><a data-ui-sref="app.page({ page: 'contact', child: null })">
+            <span class="icon"><i class="fa fa-phone"></i></span>Contact Us</a>
+        </li>
+
+    </ul>
+
+
+</div>

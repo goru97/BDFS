@@ -1,0 +1,13 @@
+
+# Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
+.grunt
+
+
+webapp.iml
+
+# Dependency directory
+.idea
+node_modules
+public/bower_components
+
+
