@@ -67,11 +67,11 @@ singApp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loca
                     return scriptLoader;
                 }]
             },
-          /*  Mayur -- The controller waits for every one of the above items to be completely resolved before instantiation.  For example, the controller will
+          /* The controller waits for every one of the above items to be completely resolved before instantiation.  For example, the controller will
          not instantiate until scripltLoader has been resolved. Then those objects are injected into the controller and available for use.  */
          /* used a template provider function which can be injected, has access to locals, and must return template HTML,*/
             templateProvider: function ($http, $stateParams, scriptLoader) {
-                //console.log('$http.get(\'views/' + $stateParams.page + '('+ $stateParams.child +')'+ '.html\')');   //mayur
+                //console.log('$http.get(\'views/' + $stateParams.page + '('+ $stateParams.child +')'+ '.html\')');
 
                 if($stateParams.page === 'lookup'){
                     return $http.get('views/lookupViews/' + $stateParams.page + ( /*optional param*/ $stateParams.child ? "_" + $stateParams.child : "") + '.html')

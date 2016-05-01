@@ -18,7 +18,8 @@ Make sure that mongodb is running on the default port 27017.
                                                     
 Server
 -------
-Make sure the NodeJS server is running on port 3500.
+Make sure the NodeJS server is running on port 4000.
+Server code: https://github.com/goru97/BDFS/tree/master/WebApplication/appServer
 
 #### Browser
 
