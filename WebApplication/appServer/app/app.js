@@ -36,12 +36,18 @@ app.set('crypto-key', config.cryptoKey);
 app.set('mongodb_uri', 'mongodb://localhost/hids');
 app.db = mongoose.connect(app.get('mongodb_uri'));
 
-app.set('port', process.env.PORT || 4000);
+app.set('port', process.env.PORT || 3100);
 
 // Middlewares
 app.use(logger('dev')); // log all requests to the console
 app.use(bodyParser.json());
-//app.use(express.bodyParser());
+
+function defaultContentTypeMiddleware (req, res, next) {
+    req.headers['content-type'] = req.headers['content-type'] || 'application/json';
+    next();
+}
+app.use(defaultContentTypeMiddleware);
+
 app.use(bodyParser.urlencoded({extended: true})); // use body parser so we can grab information from POST requests
 app.use(cookieParser());
 app.use(methodOverride());
