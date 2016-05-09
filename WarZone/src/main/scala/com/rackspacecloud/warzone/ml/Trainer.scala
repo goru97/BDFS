@@ -57,8 +57,8 @@ object Trainer {
     bos.toByteArray(); //Save model as blob
   }
 
-  def trainModel() = {
-    val data = new NetworkService().getStitchedNetwork()
+  def trainModel(from:Long, to:Long) = {
+    val data = new NetworkService().getStitchedNetwork(from, to)
     val normalizedData = ZScorer.getNormalizedData(data)
 
 

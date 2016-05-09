@@ -19,8 +19,9 @@ class CassandraIO {
   }
 
 
-  def fetchDataForMetric(metric_name: String):Array[Double] ={
-    val rdd = readRows("DATA", "metrics_full", metric_name, System.currentTimeMillis() - 172800000, System.currentTimeMillis())
+  def fetchDataForMetric(metric_name: String, from:Long, to:Long):Array[Double] ={
+    val rdd = readRows("DATA", "metrics_full", metric_name, from, to)
+    //val rdd = readRows("DATA", "metrics_full", metric_name, System.currentTimeMillis() - 172800000, System.currentTimeMillis())
     val metric_values = rdd.collect().map(row => {
     val bb = row.getBytes("value")
     deSerialize(bb)})

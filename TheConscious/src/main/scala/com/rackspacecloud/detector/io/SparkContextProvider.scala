@@ -6,7 +6,7 @@ package com.rackspacecloud.detector.io
 
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 import com.rackspacecloud.detector.utils.Config
-import org.apache.spark.{SparkContext, SparkConf}
+import org.apache.spark.SparkConf
 
 object SparkContextProvider {
   val SparkCleanerTtl = 3600

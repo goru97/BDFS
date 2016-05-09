@@ -43,10 +43,10 @@ class NetworkService {
     { case ((min, max), e) => (math.min(min, e), math.max(max, e))}
   }
 
-  def getStitchedNetwork():Array[Array[Double]] = {
+  def getStitchedNetwork(from:Long, to:Long):Array[Array[Double]] = {
     val cf = new CassandraIO()
     val network_metrics = ListBuffer[Array[Double]]()
-    network_metric_list.foreach(metric => network_metrics+=cf.fetchDataForMetric(metric))
+    network_metric_list.foreach(metric => network_metrics+=cf.fetchDataForMetric(metric, from, to))
     var metrics_length_list = ListBuffer[Int]()
     network_metrics.foreach(row => {
       metrics_length_list+=row.length
