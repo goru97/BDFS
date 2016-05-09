@@ -1,0 +1,9 @@
+host = '104.130.18.150';
+port = 9001;
+subscribedTopic = 'goru97/+';
+publishTopic = 'goru97/distanceThreshold';
+publishTopic1 = 'goru97/sensorStatus';
+useTLS = false;
+username = null;
+password = null;
+cleansession = true;

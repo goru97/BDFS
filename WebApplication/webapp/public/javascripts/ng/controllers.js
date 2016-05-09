@@ -4,7 +4,7 @@ var appControllers = angular.module('app.controllers', []);
 
 //settings and state
 var app = {
-    name: 'HIDS',
+    name: 'ANOMALY DETECTION',
     title: 'Sing - Dashboard',
     version: '1.0.0',
     /**

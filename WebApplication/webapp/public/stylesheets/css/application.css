@@ -26896,8 +26896,9 @@ a {
   top: 0;
   bottom: 0;
   width: 204px;
-  background-color: #242424;
+  background-color: #7c147c;
   color: #aaa;
+  background-image: "/assets/img/sidebar-5.jpg";
 }
 .sidebar .slimScrollBar {
   -moz-border-radius: 0 !important;
