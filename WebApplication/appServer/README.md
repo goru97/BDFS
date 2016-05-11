@@ -19,7 +19,7 @@ Clone the repository into a directory.
 
 #### Server
 1. Run `$ npm install`
-2. Run server via `$ node app/app.js localhost`
+2. Run server via `$ node app/app.js`
 
 
 
