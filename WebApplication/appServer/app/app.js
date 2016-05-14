@@ -49,8 +49,8 @@ function defaultContentTypeMiddleware (req, res, next) {
     next();
 }
 app.use(defaultContentTypeMiddleware);
-
-app.use(bodyParser.urlencoded({extended: true})); // use body parser so we can grab information from POST requests
+app.use(bodyParser.json({limit: '5mb'}));
+app.use(bodyParser.urlencoded({extended: false})); // use body parser so we can grab information from POST requests
 app.use(cookieParser());
 app.use(methodOverride());
 
