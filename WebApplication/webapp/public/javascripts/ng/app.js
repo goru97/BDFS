@@ -21,8 +21,8 @@ var singApp = angular.module('singApp', [
 
 ]);
 
-singApp.constant('ServerUrl', 'http://localhost:3100');
-//singApp.constant('ServerUrl', 'http://104.130.20.82:3100');
+//singApp.constant('ServerUrl', 'http://localhost:3100');
+singApp.constant('ServerUrl', 'http://104.130.20.82:3100');
 
 singApp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider, $provide){
 
