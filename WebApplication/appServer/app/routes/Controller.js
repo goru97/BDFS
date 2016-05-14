@@ -13,6 +13,6 @@ exports = module.exports = function(app) {
     app.post('/verify', require('./VerifyEmail').verifyToken);
 
     //Kafka
-    app.post('/:tenantId/ingest', require('./kafka').producer);
+    //app.post('/:tenantId/ingest', require('./kafka').producer);
 
 };

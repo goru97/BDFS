@@ -17,7 +17,7 @@ var env = process.argv[2],
     mongoStore = require('connect-mongo/es5')(session),
     logger = require('morgan'),
     methodOverride = require('method-override'),
-    cluster = require('cluster')
+    cluster = require('cluster'),
     producer = require('./routes/kafka');
 
 // Instantiate app
@@ -28,8 +28,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.disable('x-powered-by');
-//app.set('client-url', 'http://' + env + ':7000');
-app.set('client-url', 'http://104.130.20.82:7000');
+app.set('client-url', 'http://localhost:7000');
+//app.set('client-url', 'http://104.130.20.82:7000');
 
 // Password encryption
 app.set('crypto-key', config.cryptoKey);
