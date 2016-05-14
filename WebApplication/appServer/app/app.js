@@ -17,7 +17,8 @@ var env = process.argv[2],
     mongoStore = require('connect-mongo/es5')(session),
     logger = require('morgan'),
     methodOverride = require('method-override'),
-    cluster = require('cluster');
+    cluster = require('cluster')
+    producer = require('./routes/kafka');
 
 // Instantiate app
 var app = express();
@@ -85,6 +86,7 @@ var documents = require('./routes/documents');
 
 app.use('/secure-api', apiRouter);
 //app.use('/documents', documents);
+app.use('/v2.0', producer);
 
 
 // Start it all up
